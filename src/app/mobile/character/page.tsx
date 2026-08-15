@@ -170,7 +170,9 @@ export default function MobileCharacterPage() {
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            onKeyDown={(e) => e.key === "Enter" && handleSend()}
+            onKeyDown={(e) =>
+              e.key === "Enter" && !e.nativeEvent.isComposing && handleSend()
+            }
             disabled={isGenerating}
             placeholder={isGenerating ? "生成中..." : "追加の指示を入力、または修正..."}
             className="flex-1 bg-transparent py-2.5 text-xs text-zinc-200 placeholder-zinc-500 focus:outline-none min-w-0"
